@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cobra Kai Portugal - KarateKidPortugal</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Roboto:wght@300;500&display=swap');
+
+    body { margin: 0; background-color: #0a0a0a; color: #f4c430; font-family: 'Roboto', sans-serif; overflow-x: hidden; }
+    header { background: linear-gradient(to right, #b30000, #600000); color: #fff; text-align: center; padding: 2rem 1rem; font-family: 'Russo One', sans-serif; letter-spacing: 2px; animation: fadeIn 2s ease-in-out; }
+    header h1 { margin: 0; font-size: 2.5rem; text-transform: uppercase; }
+    header p { font-size: 1.1rem; color: #f4c430; }
+    section { max-width: 900px; margin: 2rem auto; padding: 1.5rem; background-color: #111; border: 2px solid #b30000; border-radius: 12px; box-shadow: 0 0 15px #b30000; animation: fadeInUp 1.5s ease-out; }
+    h2 { font-family: 'Russo One', sans-serif; color: #f4c430; text-transform: uppercase; border-bottom: 2px solid #b30000; padding-bottom: 0.5rem; }
+    p { line-height: 1.7; color: #ddd; }
+    .quote { text-align: center; font-family: 'Russo One', sans-serif; color: #b30000; font-size: 1.5rem; margin: 2rem 0; text-transform: uppercase; animation: glow 2s infinite alternate; }
+    .tiktok { text-align: center; margin-top: 1.5rem; }
+    .tiktok a { color: #f4c430; text-decoration: none; font-weight: bold; font-size: 1.2rem; border: 2px solid #f4c430; padding: 0.7rem 1.3rem; border-radius: 8px; transition: 0.3s; box-shadow: 0 0 10px #f4c430; }
+    .tiktok a:hover { background-color: #f4c430; color: #111; box-shadow: 0 0 25px #f4c430, 0 0 40px #b30000; }
+    footer { text-align: center; padding: 1.5rem; color: #666; font-size: 0.9rem; border-top: 1px solid #b30000; }
+    @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+    @keyframes fadeInUp { from {opacity: 0; transform: translateY(20px);} to {opacity: 1; transform: translateY(0);} }
+    @keyframes glow { from {text-shadow: 0 0 5px #b30000, 0 0 10px #f4c430;} to {text-shadow: 0 0 20px #f4c430, 0 0 30px #b30000;} }
+  </style>
+</head>
+<body>
+
+  <!-- Som da cobra -->
+  <audio id="cobraSound" src="cobra.mp3" preload="auto"></audio>
+  <script>
+    window.addEventListener('load', function() {
+      var audio = document.getElementById('cobraSound');
+      audio.play().catch(function(error){
+        console.log("Autoplay bloqueado pelo navegador: ", error);
+      });
+    });
+  </script>
+
+  <header>
+    <h1>Cobra Kai Portugal</h1>
+    <p>@karatekidportugal</p>
+  </header>
+
+  <section>
+    <h2>Sobre o Dojo</h2>
+    <p>Inspirado na primeira temporada de <strong>Cobra Kai</strong>, este espaço honra o espírito do Karate — disciplina, respeito e força interior. Aqui não há espaço para fraqueza. Cada golpe, cada treino, cada decisão molda o guerreiro que vive em ti.</p>
+  </section>
+
+  <section>
+    <h2>Biografia</h2>
+    <p>Sou praticante de karaté e criador do projeto <strong>@karatekidportugal</strong>. O karaté faz parte da minha vida desde cedo — ensinou-me disciplina, foco e respeito, dentro e fora do dojo.<br>
+    No TikTok, partilho essa paixão com todos os que acreditam que o verdadeiro combate não é contra os outros, mas contra nós próprios. Cada treino é um passo em frente, cada falha é uma lição, e cada conquista é fruto do esforço e da persistência.<br>
+    Represento Portugal com orgulho, mostrando que o espírito do karaté vive em todos nós — independentemente da idade, do nível ou da experiência. Acredito firmemente que <strong>nunca se deve desistir, mesmo quando parece impossível</strong>. O caminho do guerreiro é longo, mas a recompensa está na evolução diária.</p>
+  </section>
+
+  <div class="quote">"Strike First. Strike Hard. No Mercy."</div>
+
+  <section>
+    <h2>TikTok Oficial</h2>
+    <p>Segue o espírito Cobra Kai nas redes. Vê clipes, treinos e momentos inspirados no dojo!</p>
+    <div class="tiktok">
+      <a href="https://www.tiktok.com/@karatekidportugal" target="_blank">
+        Visita o meu TikTok
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Cobra Kai Portugal — Honra. Força. Disciplina.
+  </footer>
+
+</body>
+</html>
