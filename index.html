@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cobra Kai</title>
+<style>
+body {
+  margin:0;
+  font-family:'Bungee',sans-serif;
+  color:#f4c430;
+  background: url('novo_fundo.png') no-repeat center center fixed;
+  background-size: cover;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  min-height:100vh;
+}
+#content {
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(10px);
+  padding:1rem;
+  border-radius:12px;
+  max-width:900px;
+  width:90%;
+  text-align:center;
+  box-sizing:border-box;
+}
+h1,h2,p { margin:0.5rem 0; }
+footer { margin-top:1rem; font-size:0.9rem; }
+#title { font-size:2.5rem; font-weight:bold; word-wrap:break-word; }
+#pverde { color:#00ff00; }
+#tvermelho { color:red; }
+#texto9 { font-size:2.2rem; color:#f4c430; font-weight:bold; margin-top:0.5rem; }
+#ledQuote {
+  font-size:1.5rem;
+  font-weight:bold;
+  color:#ff0000;
+  text-shadow: 0 0 5px #ff0000,0 0 10px #ff0000,0 0 20px #ff0000,0 0 40px #ff0000;
+  animation: flicker 1s infinite;
+  margin: 1rem 0;
+}
+@keyframes flicker {
+  0%,19%,21%,23%,25%,54%,56%,100% {opacity:1;text-shadow:0 0 5px #ff0000,0 0 10px #ff0000,0 0 20px #ff0000,0 0 40px #ff0000;}
+  20%,22%,24%,55% {opacity:0.3;text-shadow:none;}
+}
+@media (max-width:600px){
+  #title { font-size:2rem; }
+  #ledQuote { font-size:1.2rem; }
+  #texto9 { font-size:1.5rem; }
+}
+#config-btn{position:fixed;top:10px;right:10px;cursor:pointer;z-index:1000;}
+#config-btn div{width:30px;height:4px;background:#ccc;margin:5px 0;}
+#audio-menu{display:none;position:fixed;top:50px;right:10px;background:rgba(0,0,0,0.8);padding:5px;border-radius:6px;z-index:1000;}
+#audio-menu button{margin:3px;}
+#audio-menu input{width:100%;}
+#tiktok-btn{
+  display:inline-block;
+  padding:0.5rem 1rem;
+  margin:1rem 0;
+  font-weight:bold;
+  color:white;
+  background:linear-gradient(45deg,#8a2be2,#0ff);
+  border-radius:10px;
+  text-decoration:none;
+  box-shadow:0 0 10px #8a2be2,0 0 20px #0ff;
+  transition:0.3s;
+}
+#tiktok-btn:hover{box-shadow:0 0 20px #8a2be2,0 0 40px #0ff;transform:scale(1.05);}
+</style>
+</head>
+<body>
+
+<audio id="hiss" preload="auto"><source src="hiss.wav" type="audio/wav"></audio>
+<audio id="cobra" preload="auto" loop><source src="cobra.wav" type="audio/wav"></audio>
+<audio id="end" preload="auto"><source src="end.wav" type="audio/wav"></audio>
+
+<div id="config-btn"><div></div><div></div><div></div></div>
+<div id="audio-menu">
+  <button onclick="cobra.play()">Play</button>
+  <button onclick="cobra.pause()">Pause</button>
+  <input type="range" min="0" max="0.1" step="0.01" value="0.1" oninput="cobra.volume=this.value">
+</div>
+
+<script>
+const hissAudio = document.getElementById('hiss');
+const cobraAudio = document.getElementById('cobra');
+const endAudio = document.getElementById('end');
+
+// volumes
+hissAudio.volume = 1;
+cobraAudio.volume = 0.1;
+endAudio.volume = 1;
+
+// tocar hiss ao entrar 2 vezes, iniciar cobra 0.5s antes do final da 2ª
+let c=0,started=false;
+function playHiss(){
+  hissAudio.currentTime=0; hissAudio.play();
+  let check=setInterval(()=>{
+    if(hissAudio.duration && hissAudio.currentTime>=hissAudio.duration-0.5 && c==1 && !started){
+      cobraAudio.play();
+      started=true;
+    }
+  },50);
+}
+hissAudio.onended = ()=> {c++; if(c<2) playHiss();}
+window.addEventListener('load', playHiss);
+
+// tocar end.wav ao sair do site
+window.addEventListener('blur',()=>{endAudio.currentTime=0; endAudio.play();});
+
+// toggle menu
+document.getElementById('config-btn').onclick = ()=>{
+  let m=document.getElementById('audio-menu');
+  m.style.display = m.style.display==='block'?'none':'block';
+};
+</script>
+
+<div id="content">
+  <h1 id="title">Cobra Kai <span id="pverde">P</span><span id="tvermelho">T</span></h1>
+  <p>@karatekidportugal</p>
+  <h2>Sobre o Dojo</h2>
+  <p>Inspirado na primeira temporada de Cobra Kai, disciplina, respeito e força interior.</p>
+  <h2>Biografia</h2>
+  <p>Praticante de karaté e criador do @karatekidportugal. No TikTok compartilho esta paixão.</p>
+  <div id="ledQuote">"Acerte Primeiro. Acerte Firme. Sem Compaixão."</div>
+  <a href="https://www.tiktok.com/@karatekidportugal" target="_blank" id="tiktok-btn">Visita o meu TikTok</a>
+  <p style="color:#f4c430;font-weight:bold;margin-top:0.5rem;font-size:1.25rem;">ESTÃO PRONTOS PARA APRENDEREM O MÉTODO DO PUNHO!?</p>
+  <p id="texto9">Então sigam-me no TikTok para não perderem vídeos de tutoriais de como aprender a defenderem-se!</p>
+  <footer>© 2025 Cobra Kai</footer>
+</div>
+</body>
+</html>
